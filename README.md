@@ -231,20 +231,32 @@ olist-ml-science/
 
 ## How to Run
 
-```bash
-# 1. Clone the repo
-git clone https://github.com/sualpsudas/olist-ml-science.git
-cd olist-ml-science
+This project reads data from a sibling folder. **Both repos must be cloned into the same parent directory.**
 
-# 2. Install dependencies
+```bash
+# 1. Create a parent folder and clone both repos into it
+mkdir olist-projects && cd olist-projects
+
+git clone https://github.com/sualpsudas/olist-statistics-science.git
+git clone https://github.com/sualpsudas/olist-ml-science.git
+
+# Your folder structure should look like this:
+# olist-projects/
+# ├── olist-statistics-science/
+# │   └── data/          ← CSV files go here
+# └── olist-ml-science/  ← this repo
+
+# 2. Download the Olist dataset from Kaggle
+# https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+# Extract and place all CSV files into: olist-statistics-science/data/
+
+# 3. Install dependencies
+cd olist-ml-science
+conda create -n ml-env python=3.11 -y
+conda activate ml-env
 pip install -r requirements.txt
 
-# 3. Download the dataset from Kaggle
-# https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
-# Place the CSV files in a sibling folder: ../olist-statistics-science/data/
-# (or update the DATA path in each notebook)
-
-# 4. Run notebooks in order (01 → 02 → 03, since artifacts are passed between them)
+# 4. Run notebooks in order (artifacts are passed 01 → 02 → 03)
 jupyter notebook notebooks/01_feature_engineering_and_baselines.ipynb
 ```
 
